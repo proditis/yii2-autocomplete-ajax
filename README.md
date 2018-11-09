@@ -11,7 +11,7 @@ Either add
 
 ```
 "require": {
-    "keygenqt/yii2-autocomplete-ajax": "*"
+    "sleifer/yii2-autocomplete-ajax": "*"
 }
 ```
 
@@ -28,7 +28,7 @@ The latest version of the module is v0.5.0 `BETA`.
 View:
 
 ```php
-use keygenqt\autocompleteAjax\AutocompleteAjax;
+use sleifer\autocompleteAjax\AutocompleteAjax;
 
 // Normal select with ActiveForm & model
 <?= $form->field($model, 'user_id')->widget(AutocompleteAjax::classname(), [
@@ -81,7 +81,7 @@ class AjaxController extends Controller
 
 
 ```php
-<?= $form->field($model, 'address')->widget(\keygenqt\autocompleteAjax\AutocompleteAjax::classname(), [
+<?= $form->field($model, 'address')->widget(\sleifer\autocompleteAjax\AutocompleteAjax::classname(), [
     'startQuery' => false,
     'url' => ['ajax/search-place'],
     'options' => ['placeholder' => 'Find place.'],
