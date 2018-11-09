@@ -1,6 +1,6 @@
 <?php
 
-namespace keygenqt\autocompleteAjax;
+namespace sleifer\autocompleteAjax;
 
 use \yii\web\AssetBundle;
 
@@ -9,18 +9,17 @@ use \yii\web\AssetBundle;
  */
 class ActiveAssets extends AssetBundle
 {
-	public $sourcePath = '@keygenqt/autocompleteAjax/assets';
+	public $sourcePath = '@sleifer/autocompleteAjax/assets';
 
 	public $js = [
-		'js/jquery-ui-1.9.2.custom.min.js',
 	];
 
 	public $depends = [
-		'yii\web\JqueryAsset'
+		'yii\web\JqueryAsset',
+        'yii\jui\JuiAsset'
 	];
 
 	public $css = [
-		'css/jquery-ui-1.9.2.custom.min.css',
 		'css/yii2-autocomplete-ajax.css',
 	];
 }

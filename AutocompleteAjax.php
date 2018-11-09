@@ -1,6 +1,6 @@
 <?php
 
-namespace keygenqt\autocompleteAjax;
+namespace sleifer\autocompleteAjax;
 
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -176,7 +176,7 @@ class AutocompleteAjax extends InputWidget
                         type: 'GET',
                         dataType: 'json',
                         url: '{$this->getUrl()}',
-                        data: {term: '$value'},
+                        data: {term: '$value', load: true},
                         success: function(data) {
 
                             if (data.length == 0) {
