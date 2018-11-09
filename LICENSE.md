@@ -1,6 +1,5 @@
 Copyright (c) 2014 - 2016, Vitaliy Zarubin
 
-http://keygenqt.ru/
 
 All rights reserved.
 

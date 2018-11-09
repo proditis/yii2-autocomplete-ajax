@@ -5,7 +5,7 @@ namespace sleifer\autocompleteAjax;
 use \yii\web\AssetBundle;
 
 /**
- * @author KeyGen <keygenqt@gmail.com>
+ * @author Ismael Sleifer <ismaelsleifer@gmail.com>
  */
 class ActiveAssets extends AssetBundle
 {

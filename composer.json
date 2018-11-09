@@ -10,14 +10,14 @@
 		"jquery",
 		"plugin"
 	],
-	"homepage" : "https://github.com/keygenqt/yii2-autocomplete-ajax",
+	"homepage" : "https://github.com/ismaelsleifer/yii2-autocomplete-ajax",
 	"type" : "yii2-extension",
 	"license" : "BSD-3-Clause",
 	"version" : "0.5.0",
 	"authors" : [{
-			"name" : "Vitaliy Zarubin",
-			"email" : "keygenqt@gmail.com",
-			"homepage" : "http://keygenqt.ru/",
+			"name" : "Ismael Sleifer",
+			"email" : "ismaelsleifer@gmail.com",
+			"homepage" : "http://www.sleifer.com.br",
 			"role" : "Developer"
 		}
 	],
@@ -27,7 +27,7 @@
 	},
 	"autoload" : {
 		"psr-4" : {
-			"keygenqt\\autocompleteAjax\\" : ""
+			"sleifer\\autocompleteAjax\\" : ""
 		}
 	}
 }
