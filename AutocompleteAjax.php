@@ -38,8 +38,6 @@ class AutocompleteAjax extends InputWidget
 
     public function run()
     {
-//         $id = $this->getId();
-        
         $id = BaseHtml::getInputId($this->model, $this->attribute);
         $id = str_replace('-', '_', $id);
         
@@ -163,7 +161,7 @@ class AutocompleteAjax extends InputWidget
                             cache_{$id} [term] = data;
                             response(data);
 
-                            console.log(data.length)
+//                             console.log(data.length)
                                 
                             if(data.length == 0){
                                 $('#{$id}-hidden').val('');
@@ -179,7 +177,7 @@ class AutocompleteAjax extends InputWidget
                     select: function(event, ui)
                     {
                     
-                        console.log(ui);
+//                         console.log(ui);
                     
                         afterSelect{$id}(event, ui);
 
