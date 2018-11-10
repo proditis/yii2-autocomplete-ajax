@@ -13,6 +13,7 @@ class AutocompleteAjax extends InputWidget
     public $url = [];
     public $options = [];
     public $afterSelect = 'function(event, ui) {}';
+    public $notFound = 'Not found!';
 
     private $_baseUrl;
     private $_ajaxUrl;
@@ -150,20 +151,37 @@ class AutocompleteAjax extends InputWidget
                             response( cache_{$id} [term] );
                             return;
                         }
+                        $('#{$id}').addClass('loading');
                         $.getJSON('{$this->getUrl()}', request, function( data, status, xhr ) {
+                            
                             cache_{$id} [term] = data;
                             response(data);
+
+                            console.log(data.length)
+                                
+                            if(data.length == 0){
+                                $('#{$id}-hidden').val('');
+                                $('#{$id}-hidden').change();
+                                $('#{$id}').parent().addClass('has-error');
+                                $('#{$id}').next().html('{$this->notFound}');
+                            }
+   
+
+                            $('#{$id}').removeClass('loading');
                         });
                     },
                     select: function(event, ui)
                     {
                     
-                    console.log(ui);
+                        console.log(ui);
                     
                         afterSelect{$id}(event, ui);
+
+                        $('#{$id}').parent().removeClass('has-error');
+                        $('#{$id}').next().html('');
                         
                         $('#{$id}-hidden').val(ui.item.id);
-                         $('#{$id}-hidden').change();
+                        $('#{$id}-hidden').change();
                     }
                 });
             ");
@@ -177,6 +195,9 @@ class AutocompleteAjax extends InputWidget
                         dataType: 'json',
                         url: '{$this->getUrl()}',
                         data: {term: '$value', load: true},
+                        beforeSend: function(){
+                            $('#{$id}').addClass('loading');
+                        },
                         success: function(data) {
 
                             if (data.length == 0) {
@@ -199,15 +220,10 @@ class AutocompleteAjax extends InputWidget
             ");
         }
         
-        return Html::tag('div', 
-                
+        return 
             Html::activeHiddenInput($this->model, $this->attribute, ['id' => $id . '-hidden', 'class' => 'form-control'])
-            . ($value && $this->startQuery ? Html::tag('div', "<img src='{$this->registerActiveAssets()}/images/load.gif'/>", ['class' => 'autocomplete-image-load']) : '')
-            . Html::textInput('', $value && !$this->startQuery ? $value : '', array_merge($this->options, ['id' => $id, 'class' => 'form-control']))
+          . Html::textInput('', $value && !$this->startQuery ? $value : '', array_merge($this->options, ['id' => $id, 'class' => 'form-control']));
               
-            , [
-                'style' => 'position: relative;'
-            ]
-        );
+            
     }
 }

@@ -21,12 +21,15 @@
     border: none !important;
     border-bottom: 1px solid #A0A0A0 !important;
 }
-.autocomplete-image-load {
-    width: 27px;
-    position: absolute;
-    top: 4px;
-    left: 5px;
+
+.loading {    
+    background-color: #ffffff;
+    background-image: url("../images/load.gif");
+    background-size: 25px 25px;
+    background-position:right center;
+    background-repeat: no-repeat;
 }
+
 .autocomplete-image-load img {
     width: 100%;
 }
