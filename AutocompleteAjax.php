@@ -5,6 +5,7 @@ namespace sleifer\autocompleteAjax;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\InputWidget;
+use yii\helpers\BaseHtml;
 
 class AutocompleteAjax extends InputWidget
 {
@@ -12,6 +13,7 @@ class AutocompleteAjax extends InputWidget
     public $multiple = false;
     public $url = [];
     public $options = [];
+    public $hidden_options = [];
     public $afterSelect = 'function(event, ui) {}';
     public $notFound = 'Not found!';
 
@@ -36,7 +38,11 @@ class AutocompleteAjax extends InputWidget
 
     public function run()
     {
-        $id = $this->getId();
+//         $id = $this->getId();
+        
+        $id = BaseHtml::getInputId($this->model, $this->attribute);
+        $id = str_replace('-', '_', $id);
+        
         $this->afterSelect = "var afterSelect{$id} = " . $this->afterSelect;
         $value = $this->model->{$this->attribute};
         $this->registerActiveAssets();
@@ -225,8 +231,8 @@ class AutocompleteAjax extends InputWidget
         }
         
         return 
-            Html::activeHiddenInput($this->model, $this->attribute, ['id' => $id . '-hidden', 'class' => 'form-control'])
-          . Html::textInput('', $value && !$this->startQuery ? $value : '', array_merge($this->options, ['id' => $id]));
+            Html::activeHiddenInput($this->model, $this->attribute,  array_merge($this->hidden_options, ['id' => $id . '-hidden']))
+          . Html::textInput($id . '_text', $value && !$this->startQuery ? $value : '', array_merge($this->options, ['id' => $id]));
               
             
     }
