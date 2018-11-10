@@ -220,9 +220,13 @@ class AutocompleteAjax extends InputWidget
             ");
         }
         
+        if(!isset($this->options['class'])){
+            $this->options['class'] = 'form-control';
+        }
+        
         return 
             Html::activeHiddenInput($this->model, $this->attribute, ['id' => $id . '-hidden', 'class' => 'form-control'])
-          . Html::textInput('', $value && !$this->startQuery ? $value : '', array_merge($this->options, ['id' => $id, 'class' => 'form-control']));
+          . Html::textInput('', $value && !$this->startQuery ? $value : '', array_merge($this->options, ['id' => $id]));
               
             
     }
