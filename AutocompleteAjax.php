@@ -217,7 +217,7 @@ class AutocompleteAjax extends InputWidget
                                 }
                                 $('#{$id}').val(arr.join(', '));
                             }
-                            $('.autocomplete-image-load').hide();
+                            $('#{$id}').removeClass('loading');
                         }
                     });
                 });
