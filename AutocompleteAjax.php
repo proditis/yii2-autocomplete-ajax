@@ -205,11 +205,11 @@ class AutocompleteAjax extends InputWidget
                         success: function(data) {
 
                             if (data.length == 0) {
-                                $('#{$id}').attr('placeholder', 'User not found !!!');
+                                $('#{$id}').attr('placeholder', '{$this->notFound}');
                             } else {
                                 var arr = [];
                                 for (var i = 0; i<data.length; i++) {
-                                    arr[i] = data[i].label;
+                                    arr[i] = data[i].value;
                                     if (!(data[i].id in cache_{$id}_2)) {
                                         cache_{$id}_1[data[i].label] = data[i].id;
                                         cache_{$id}_2[data[i].id] = data[i].label;
