@@ -161,8 +161,6 @@ class AutocompleteAjax extends InputWidget
                             cache_{$id} [term] = data;
                             response(data);
 
-//                             console.log(data.length)
-                                
                             if(data.length == 0){
                                 $('#{$id}-hidden').val('');
                                 $('#{$id}-hidden').change();
@@ -176,16 +174,13 @@ class AutocompleteAjax extends InputWidget
                     },
                     select: function(event, ui)
                     {
-                    
-//                         console.log(ui);
-                    
                         afterSelect{$id}(event, ui);
 
                         $('#{$id}').parent().removeClass('has-error');
                         $('#{$id}').next().html('');
                         
                         $('#{$id}-hidden').val(ui.item.id);
-                        $('#{$id}-hidden').change();
+                        $('#{$id}').change();
                     }
                 });
             ");
@@ -203,7 +198,6 @@ class AutocompleteAjax extends InputWidget
                             $('#{$id}').addClass('loading');
                         },
                         success: function(data) {
-
                             if (data.length == 0) {
                                 $('#{$id}').attr('placeholder', '{$this->notFound}');
                             } else {
@@ -231,7 +225,5 @@ class AutocompleteAjax extends InputWidget
         return 
             Html::activeHiddenInput($this->model, $this->attribute,  array_merge($this->hidden_options, ['id' => $id . '-hidden']))
           . Html::textInput($id . '_text', $value && !$this->startQuery ? $value : '', array_merge($this->options, ['id' => $id]));
-              
-            
     }
 }
