@@ -167,9 +167,9 @@ class AutocompleteAjax extends InputWidget
                                 $('#{$id}').parent().addClass('has-error');
                                 $('#{$id}').next().html('{$this->notFound}');
                             }
-   
-
                             $('#{$id}').removeClass('loading');
+                            let date = Date.now();
+                            $('.ui-autocomplete').css('z-index', parseInt(date.toString().substr(4, 10)));
                         });
                     },
                     select: function(event, ui)
@@ -212,6 +212,8 @@ class AutocompleteAjax extends InputWidget
                                 $('#{$id}').val(arr.join(', '));
                             }
                             $('#{$id}').removeClass('loading');
+                            let date = Date.now();
+                            $('.ui-autocomplete').css('z-index', parseInt(date.toString().substr(4, 10)));
                         }
                     });
                 });
