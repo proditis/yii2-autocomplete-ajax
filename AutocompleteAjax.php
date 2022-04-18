@@ -203,7 +203,7 @@ class AutocompleteAjax extends InputWidget
                             } else {
                                 var arr = [];
                                 for (var i = 0; i<data.length; i++) {
-                                    arr[i] = data[i].value;
+                                    arr[i] = data[i].label;
                                     if (!(data[i].id in cache_{$id}_2)) {
                                         cache_{$id}_1[data[i].label] = data[i].id;
                                         cache_{$id}_2[data[i].id] = data[i].label;
